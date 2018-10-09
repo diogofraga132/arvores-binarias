@@ -185,24 +185,25 @@ BinaryTree.prototype.posOrder = function(){
 
 
 BinaryTree.prototype.search = function(){
-  (function search(node) {
+  (function posOrder(node) { 
     if(node.left) {
-      preOrder(node.left);
+      posOrder(node.left);
     }
     if(node.right) {
-      preOrder(node.right);
+      posOrder(node.right);
     }
+    //console.log(node.value);
     var numSearch = document.getElementById("numSearch").value;
-    if(this.root == null){
-      return this.root;
+    //console.log(numSearch);
+    if(node.value==numSearch){
+      alert('achou o ' + numSearch);
+      return true;
     }
-    if(this.root != null){
-      if(this.root.value == numSearch){
-        alert(this.root.value);
-      }
-    }
+    //console.log(node.value);
   })(this.root);
 }
+
+
 
 //funções para mandar/pegar para/do  html
 function clearView(){
@@ -226,7 +227,7 @@ function show(){
   bt.inOrder();
 
  // console.log("pós ordem");
-  bt.posOrder();
+ bt.posOrder();
 }
 
 function remove(){
@@ -244,7 +245,7 @@ function search(){
 
 
 var bt = new NewBinaryTree();
-bt.Insert(10,20,30,40,50);
+//bt.Insert(10,20,30,40,50);
 show();
 //bt.DeleteNode(10);
 
